@@ -1,0 +1,49 @@
+@mixin getKeywordsStyles {
+  .keywords {
+    @include getCardStyles;
+    &__info {
+      justify-content: space-between;
+      // grid-template-columns: 1fr 1fr;
+      @include getCardIconStyle;
+    }
+    &_related_post {
+      float: right;
+      border-radius: 0.7rem;
+      width: 45%;
+      height: 87%;
+      margin-top: 1rem;
+      // background-color: #31343f;
+      background: rgb(34,40,51);
+    background: linear-gradient(323deg, rgba(34,40,51,1) 0%, rgba(47,53,64,1) 100%);
+      margin-right: 0.5rem;
+    }
+    .recharts-responsive-container {
+      float: left;
+    }
+    .keywords_related_post_info {
+      margin-top: 0.7rem;
+      margin-left: 0.7rem;
+      h5 {
+        color: #fafafa;
+        font-size: 0.8rem;
+        text-overflow: ellipsis;
+        overflow:hidden;
+        white-space: nowrap;
+        margin-left: 0.7rem;
+        margin-right: 0.7rem;
+      }
+      span {
+        font-size: 0.7rem;
+        margin-left: 0.7rem;
+        margin-right: 0.7rem;
+      }
+    }
+    .keywords_related_post_info:hover {
+      border-left: 3px solid #c1115a;
+      transition:  ease 0.3s;
+    }
+    .keywords_related_post_info:not(:hover) {
+      transition:  ease 1s;
+    }
+}
+}

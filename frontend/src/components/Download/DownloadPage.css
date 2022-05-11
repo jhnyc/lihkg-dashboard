@@ -1,0 +1,79 @@
+.download_page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: rgb(37, 41, 49);
+    background: linear-gradient(323deg, rgba(37, 41, 49, 1) 0%, rgba(45, 51, 60, 1) 20%, rgba(77, 86, 98, 1) 100%); */
+    background-color: black;
+}
+
+.download_page .container {
+    background: rgb(193, 17, 90);
+    background: linear-gradient(140deg, rgba(193, 17, 90, 1) 0%, rgba(50, 63, 255, 1) 100%);
+    padding: 0.3em;
+    border-radius: 0.4em;
+    margin-bottom: 20%;
+}
+
+.narative {
+    color: #fafafa;
+    align-items: center;
+    justify-content: center;
+    width: 25vw;
+    border-radius: 0.4rem;
+    /* background-color: #252931; */
+    background-color: #181818;
+    padding: 2rem;
+}
+
+.narative h3 {
+    text-align: justify;
+    padding: 0.3em;
+    font-weight: 300;
+    font-size: 1em;
+}
+
+.download_button {
+    display: flex;
+    justify-content: center;
+}
+
+.download_button button {
+    margin-top: 2em;
+    border-radius: 2em;
+    height: 3em;
+    width: 8em;
+    color: #c8c8c8;
+    background: rgb(193, 17, 90);
+    background: linear-gradient(323deg, rgba(193, 17, 90, 1) 0%, rgba(50, 63, 255, 1) 100%);
+    background-size: 200% 200%;
+    border: 0px;
+    cursor: pointer;
+}
+
+.download_button button:hover {
+    animation: animate-gradient 4s ease 1 alternate;
+    transition: ease 0.3s;
+    color: #fafafa;
+}
+
+.download_button button:not(:hover) {
+    transition: ease 0.3s;
+}
+
+.download_button a{
+        text-decoration: none;
+        color: #fafafa;
+}
+
+@keyframes animate-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

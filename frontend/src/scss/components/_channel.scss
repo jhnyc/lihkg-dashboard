@@ -1,0 +1,17 @@
+@mixin getChannelStyles {
+  .channel {
+    @include getCardStyles;
+    &__info {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      @include getCardIconStyle;
+    }
+    .recharts-responsive-container {
+      transform: translateY(-20%);
+    }
+  #text {
+    color: #fafafa;
+  }
+  }
+}

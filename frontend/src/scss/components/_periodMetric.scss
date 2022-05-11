@@ -1,0 +1,39 @@
+@mixin getPeriodMetricStyles {
+    // #setDaily {
+    //     display: flex;
+    //     height: 2rem;
+    //     width: 2rem;
+    //     border-radius: 50%;
+    // }
+
+    
+    .top__card__controls {
+        display: flex;
+        position: relative;
+        justify-content: flex-end;
+        top: -40px;
+        gap: 1rem;
+        & button {
+            display: flex;
+            height: 1.5rem;
+            width: 1.5rem;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            border: 0px;
+            font-size: 0.5rem;
+            color: #fafafa;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #setDaily {
+            background-color: #2d3965;
+        }
+        #setWeekly {
+            background-color: #2d3965;
+        }
+        #setMonthly {
+            background-color: #2d3965;
+        }
+    }
+}
