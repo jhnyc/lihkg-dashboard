@@ -1,6 +1,5 @@
 import React from "react";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
-import { BsThreeDots } from "react-icons/bs";
 
 function PostActivity() {
   const [displayMode, setDisplayMode] = React.useState("by_weekday");
@@ -11,7 +10,7 @@ function PostActivity() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`http://localhost:3100/awstest`);
+        const response = await fetch(`http://localhost:3100/posts_by_weekday_hour`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

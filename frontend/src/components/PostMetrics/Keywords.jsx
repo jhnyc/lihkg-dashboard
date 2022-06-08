@@ -11,11 +11,37 @@ import {
 import topWordsRelatedPosts from ".././data/top_words_related_posts.json";
 
 function Keywords() {
-  const data = topWordsRelatedPosts
-  const NUMBEROFPOST = 8;
-  const [selectedKeyword, setSelectedKeyword] = React.useState(
-    data.at(0).Phrase
-  );
+   const [data, setData] = React.useState([]);
+   const [loading, setLoading] = React.useState(true);
+   const [error, setError] = React.useState(null);
+   const NUMBEROFPOST = 8;
+   const [selectedKeyword, setSelectedKeyword] = React.useState(null);
+ 
+   React.useEffect(() => {
+     const getData = async () => {
+       try {
+         const response = await fetch(
+           `http://localhost:3100/top_words_related_posts`
+         );
+         if (!response.ok) {
+           throw new Error(
+             `This is an HTTP error: The status is ${response.status}`
+           );
+         }
+         let actualData = await response.json();
+         setData(actualData);
+         setSelectedKeyword(actualData.at(0).Phrase);
+         setError(null);
+       } catch (err) {
+         setError(err.message);
+         setData(null);
+       } finally {
+         setLoading(false);
+       }
+     };
+     getData();
+   }, []);
+   
 
   const barChartOnClickSearchPost = (e) => {
     var phrase = e.Phrase.replace(" ", "");
@@ -102,8 +128,8 @@ function Keywords() {
         <h3>Popular Words</h3>
         <span>What did we frequently talk about?</span>
       </div>
-      {barChart()}
-      {relatedPost()}
+      {loading ? "Loading..." : barChart()}
+      {loading ? "Loading..." : relatedPost()}
     </div>
   );
 }

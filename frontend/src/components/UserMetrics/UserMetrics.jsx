@@ -6,10 +6,7 @@ import TotalUsers from "./TotalUsers";
 import TotalNewUsers from "./TotalNewUsers";
 import SexRatio from "./SexRatio";
 import GenderDistributionByChannel from "./GenderDistributionByChannel";
-import TotalLikeDislike from "./TotalLikeDislike";
 import MemberScatterPlot from "./MemberScatterPlot";
-import Keywords from "./Keywords";
-import ChannelDistribution from "./ChannelDistribution";
 import AnnualUserGrowth from "./AnnualUserGrowth";
 
 function UserMetrics() {

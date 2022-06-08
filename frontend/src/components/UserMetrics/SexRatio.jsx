@@ -11,15 +11,44 @@ import {
 import GenderCount from '../data/gender_count.json'
 
 function SexRatio() {
-  const data = [GenderCount];
+  // const data = [GenderCount];
+  const [data, setData] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
+  const [maleFemaleRatio, setMaleFemaleRatio] = React.useState(1);
 
-  const maleFemaleRatio = Math.round((data[0].M * 10) / data[0].F) / 10;
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3100/gender_count`
+        );
+        if (!response.ok) {
+          throw new Error(
+            `This is an HTTP error: The status is ${response.status}`
+          );
+        }
+        let actualData = await response.json();
+        setData(actualData);
+        setMaleFemaleRatio(Math.round((actualData.M * 10) / actualData.F) / 10)
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
+
 
   return (
+    
     <div className="summary_statistics card">
       {/* // <div className="summary_statistics__info"> */}
       <div className="ratio">
-        <h1 style={{ color: "#323fff" }}>{maleFemaleRatio}</h1>
+        <h1 style={{ color: "#323fff" }}>{loading ? " " : maleFemaleRatio}</h1>
         <h3>:</h3>
         <h1 style={{ color: "#c1115a" }}>1</h1>
         <span>male to female ratio</span>
@@ -28,7 +57,7 @@ function SexRatio() {
         <BarChart
           layout="vertical"
           margin={{ left: 20, right: 0 }}
-          data={data}
+          data={[data]}
           barSize={40}
         >
           <YAxis type="category" hide />

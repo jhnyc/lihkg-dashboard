@@ -5,9 +5,36 @@ import annualUser from "../data/annual_user_count.json";
 
 
 function AnnualUserGrowth() {
-  const data = annualUser;
+  const [data, setData] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
+
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3100/annual_user_count`
+        );
+        if (!response.ok) {
+          throw new Error(
+            `This is an HTTP error: The status is ${response.status}`
+          );
+        }
+        let actualData = await response.json();
+        setData(actualData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
 
   return (
+    
     <div className="post__activity card">
       <div className="post__activity__info">
         <div>
@@ -15,7 +42,8 @@ function AnnualUserGrowth() {
           <span>2019 saw the biggest jump in users</span>
         </div>
       </div>
-      <ResponsiveContainer width="100%" height="80%">
+      {loading ? "Loading..." :
+      (<ResponsiveContainer width="100%" height="80%">
         <BarChart data={data}>
           <XAxis
             dataKey={"create_time"}
@@ -35,7 +63,7 @@ function AnnualUserGrowth() {
             barSize={20}
           />
         </BarChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer>)}
     </div>
   );
 }

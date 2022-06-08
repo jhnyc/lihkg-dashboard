@@ -12,8 +12,34 @@ import byChannelData from ".././data/by_channel_distribution.json";
 
 function ChannelDistribution() {
   const [displayData, setDisplayData] = React.useState("");
+  const [data, setData] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
 
-  const data = byChannelData;
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3100/by_channel_distribution`
+        );
+        if (!response.ok) {
+          throw new Error(
+            `This is an HTTP error: The status is ${response.status}`
+          );
+        }
+        let actualData = await response.json();
+        setData(actualData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        setData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getData();
+  }, []);
+
 
   const COLORS = [
     "#323fff",
@@ -30,7 +56,7 @@ function ChannelDistribution() {
     "#636a80",
   ];
 
-  const totalPostCount = data.reduce(
+  const totalPostCount = loading ? 1 : data.reduce(
     (totalSum, item) => totalSum + item.post_count,
     0
   );
@@ -40,7 +66,8 @@ function ChannelDistribution() {
   }
 
   return (
-    <div className="channel card">
+    loading ? "Loading..." : 
+    (<div className="channel card">
       <div className="channel__info">
         <div>
           <h3>Post Distribution by Channel</h3>
@@ -80,7 +107,7 @@ function ChannelDistribution() {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-    </div>
+    </div>)
   );
 }
 

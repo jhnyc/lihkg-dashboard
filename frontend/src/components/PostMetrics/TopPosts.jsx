@@ -1,16 +1,42 @@
 import React from "react";
-import topPosts from ".././data/top_posts.json"
 
 function TopPosts() {
-    const [topLiked, setTopLiked] = React.useState(true)
-    const data = topLiked ? topPosts.by_like : topPosts.by_dislike
+    const [displayByLike, setDisplayByLike] = React.useState(true)
+    // const data = displayByLike ? topPosts.by_like : topPosts.by_dislike
+    const [data, setData] = React.useState(null);
+    const [loading, setLoading] = React.useState(true);
+    const [error, setError] = React.useState(null);
+  
+    React.useEffect(() => {
+      const getData = async () => {
+        try {
+          const response = await fetch(
+            `http://localhost:3100/top_posts`
+          );
+          if (!response.ok) {
+            throw new Error(
+              `This is an HTTP error: The status is ${response.status}`
+            );
+          }
+          let actualData = await response.json();
+          setData(actualData);
+          setError(null);
+        } catch (err) {
+          setError(err.message);
+          setData(null);
+        } finally {
+          setLoading(false);
+        }
+      };
+      getData();
+    }, []);
 
     const toggleHandler = () => {
-        setTopLiked(!topLiked)
+        setDisplayByLike(false)
     }
 
     const generateData = () => {
-        return data.map((item, index) => (
+        return data.by_like.map((item, index) => (
           <div className="trend">
             <div className="trend__info">
               <div>
@@ -25,7 +51,7 @@ function TopPosts() {
             </div>
             <div className="trend__meta">
               <span id="channel_icon">{item.channel}</span>
-              <h5>{topLiked ? item.like : item.dislike}</h5>
+              <h5>{displayByLike ? item.like : item.dislike}</h5>
             </div>
           </div>
         ));
@@ -34,7 +60,6 @@ function TopPosts() {
     return (
       <div className="trending__tracks card">
         <div className="trending__info">
-          {console.log(data)}
           <div>
             <h3>Viral Posts</h3>
             <span>What are the most liked & disliked posts?</span>
@@ -43,13 +68,13 @@ function TopPosts() {
             className="like_dislike"
             onClick={toggleHandler}
             style={{
-              backgroundColor: `${topLiked ? "#2d3965" : "#852d51"}`,
+              backgroundColor: `${displayByLike ? "#2d3965" : "#852d51"}`,
             }}
           >
-            {topLiked ? "L" : "D"}
+            {displayByLike ? "L" : "D"}
           </button>
         </div>
-        {generateData()}
+        {loading ? "Loading..." : generateData()}
       </div>
     );
 }
