@@ -10,7 +10,7 @@ function TotalUsers() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3100/annual_user_count`
+          `/annual_user_count`
         );
         if (!response.ok) {
           throw new Error(

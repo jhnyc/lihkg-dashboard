@@ -9,7 +9,7 @@ function TotalPosts() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`http://localhost:3100/post_statistics`);
+        const response = await fetch(`/post_statistics`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

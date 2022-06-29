@@ -8,9 +8,7 @@ function TotalLikeDislike() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3100/post_statistics`
-        );
+        const response = await fetch(`/post_statistics`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -43,7 +41,9 @@ function TotalLikeDislike() {
       </div>
       <div className="summary_statistics card">
         <div className="summary_statistics__info">
-          <h1>{loading ? "Loading" : `${roundNumberMillion(data.dislike)}m`}  </h1>
+          <h1>
+            {loading ? "Loading" : `${roundNumberMillion(data.dislike)}m`}{" "}
+          </h1>
           <span>dislikes</span>
         </div>
       </div>

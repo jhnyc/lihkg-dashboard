@@ -12,7 +12,7 @@ function PeriodMetric() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3100/number_of_posts`
+          `/number_of_posts`
         );
         if (!response.ok) {
           throw new Error(

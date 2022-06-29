@@ -11,7 +11,7 @@ function TrendingUsers() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3100/post_count_by_user_age`
+          `/post_count_by_user_age`
         );
         if (!response.ok) {
           throw new Error(

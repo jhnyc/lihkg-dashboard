@@ -27,7 +27,7 @@ function MemberScatterPlot() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3100/user_scatter_plot_data`
+          `/user_scatter_plot_data`
         );
         if (!response.ok) {
           throw new Error(

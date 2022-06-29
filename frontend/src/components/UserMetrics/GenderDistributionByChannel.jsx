@@ -11,7 +11,7 @@ function GenderDistributionByChannel() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3100/by_channel_sex_distribution`
+          `/by_channel_sex_distribution`
         );
         if (!response.ok) {
           throw new Error(

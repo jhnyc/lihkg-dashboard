@@ -10,7 +10,7 @@ function PostActivity() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`http://localhost:3100/posts_by_weekday_hour`);
+        const response = await fetch(`/posts_by_weekday_hour`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

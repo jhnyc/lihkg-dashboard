@@ -21,7 +21,7 @@ function SexRatio() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3100/gender_count`
+          `/gender_count`
         );
         if (!response.ok) {
           throw new Error(
@@ -48,7 +48,7 @@ function SexRatio() {
     <div className="summary_statistics card">
       {/* // <div className="summary_statistics__info"> */}
       <div className="ratio">
-        <h1 style={{ color: "#323fff" }}>{loading ? " " : maleFemaleRatio}</h1>
+        <h1 style={{ color: "#323fff" }}>{loading ? "1" : maleFemaleRatio}</h1>
         <h3>:</h3>
         <h1 style={{ color: "#c1115a" }}>1</h1>
         <span>male to female ratio</span>

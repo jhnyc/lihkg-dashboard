@@ -23,7 +23,7 @@ function ProfanityMetrics() {
     const getData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:3100/profanity_statistics`
+          `/profanity_statistics`
         );
         if (!response.ok) {
           throw new Error(

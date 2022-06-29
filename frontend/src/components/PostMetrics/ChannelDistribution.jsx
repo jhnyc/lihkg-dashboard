@@ -19,9 +19,7 @@ function ChannelDistribution() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:3100/by_channel_distribution`
-        );
+        const response = await fetch(`/by_channel_distribution`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -40,7 +38,6 @@ function ChannelDistribution() {
     getData();
   }, []);
 
-
   const COLORS = [
     "#323fff",
     "#53ebe4",
@@ -56,18 +53,18 @@ function ChannelDistribution() {
     "#636a80",
   ];
 
-  const totalPostCount = loading ? 1 : data.reduce(
-    (totalSum, item) => totalSum + item.post_count,
-    0
-  );
+  const totalPostCount = loading
+    ? 1
+    : data.reduce((totalSum, item) => totalSum + item.post_count, 0);
 
   function calculatePercentage(value) {
     return Math.round(value / totalPostCount);
   }
 
-  return (
-    loading ? "Loading..." : 
-    (<div className="channel card">
+  return loading ? (
+    "Loading..."
+  ) : (
+    <div className="channel card">
       <div className="channel__info">
         <div>
           <h3>Post Distribution by Channel</h3>
@@ -107,7 +104,7 @@ function ChannelDistribution() {
           </Pie>
         </PieChart>
       </ResponsiveContainer>
-    </div>)
+    </div>
   );
 }
 
