@@ -1,22 +1,22 @@
 import React from "react";
 
 import Navbar from "./Navbar";
-import PeriodMetric from "./PeriodMetric";
-import ProfanityMetric from "./ProfanityMetric";
-import TrendingUsers from "./TrendingUsers";
+import PeriodStatistics from "./PeriodStatistics";
+import Profanities from "./Profanities";
+import Contributor from "./Contributor";
 import TotalPosts from "./TotalPosts";
 import TotalUniquePublishers from "./TotalUniquePublishers";
 import TotalPages from "./TotalPages";
 import PostActivity from "./PostActivity";
 import TotalLikeDislike from "./TotalLikeDislike";
-import TopPosts from "./TopPosts";
-import Keywords from "./Keywords";
-import ChannelDistribution from "./ChannelDistribution";
+import ViralPosts from "./ViralPosts";
+import PopularWords from "./PopularWords";
+import PostByChannel from "./PostByChannel";
 
 function Metrics() {
   return (
     <div className="metrics">
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="grid-zero">
         <TotalPosts />
         <TotalUniquePublishers />
@@ -24,17 +24,17 @@ function Metrics() {
         <TotalLikeDislike />
       </div>
       <div className="grid-one">
-        <PeriodMetric />
+        <PeriodStatistics />
         <PostActivity />
       </div>
       <div className="grid-two">
-        <TopPosts />
-        <TrendingUsers />
-        <ChannelDistribution />
-        <Keywords />
+        <ViralPosts />
+        <Contributor />
+        <PostByChannel />
+        <PopularWords />
       </div>
       <div className="grid-three">
-        <ProfanityMetric />
+        <Profanities />
       </div>
     </div>
   );

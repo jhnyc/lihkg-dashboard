@@ -2,7 +2,6 @@ import React from "react";
 import "./TopFemaleMaleChannel.css";
 
 function TopFemaleMaleChannel() {
-  const [sortBy, setSortBy] = React.useState("by_post");
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);

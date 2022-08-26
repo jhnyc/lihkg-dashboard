@@ -1,7 +1,6 @@
 
 import React from "react";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
-import annualUser from "../data/annual_user_count.json";
 
 
 function AnnualUserGrowth() {
@@ -43,8 +42,8 @@ function AnnualUserGrowth() {
         </div>
       </div>
       {loading ? "Loading..." :
-      (<ResponsiveContainer width="100%" height="80%">
-        <BarChart data={data}>
+      (<ResponsiveContainer width="100%" height="90%">
+        <BarChart data={data} margin={{ top: 30, bottom: 20 }}>
           <XAxis
             dataKey={"create_time"}
             axisLine={false}

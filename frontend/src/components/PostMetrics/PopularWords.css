@@ -1,0 +1,48 @@
+.keywords__info {
+    justify-content: space-between;
+}
+
+.keywords_related_post {
+    float: right;
+    border-radius: 0.7rem;
+    width: 45%;
+    height: 97%;
+    margin-top: -2rem;
+    background: #222833;
+    background: linear-gradient(323deg, rgba(34, 40, 51, 1) 0%, rgba(47, 53, 64, 1) 100%);
+    margin-right: 0.5rem;
+}
+
+.keywords .recharts-responsive-container {
+    float: left;
+}
+
+.keywords .keywords_related_post_info {
+    margin-top: 0.4rem;
+    margin-left: 0.7rem;
+}
+
+.keywords .keywords_related_post_info h5 {
+    color: #fafafa;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+}
+
+.keywords .keywords_related_post_info span {
+    font-size: 0.7rem;
+    margin-left: 0.7rem;
+    margin-right: 0.7rem;
+}
+
+.keywords .keywords_related_post_info:hover {
+    border-left: 3px solid #c1115a;
+    transition: ease 0.3s;
+}
+
+.keywords .keywords_related_post_info:not(:hover) {
+    transition: ease 1s;
+}

@@ -39,12 +39,9 @@ function PostActivity() {
 
   return (
     <div className="post__activity card">
-      <div className="post__activity__info">
-        <div>
-          <h3>Post Activity</h3>
-          <span>Avg. Posts by Weekday and Hour</span>
-        </div>
-
+      <h3>Post Activity</h3>
+      <span>Users are most active at 11pm during weekdays.</span>
+      <div className="top__card__controls">
         <button
           id="weekday_hour"
           onClick={handleClick}

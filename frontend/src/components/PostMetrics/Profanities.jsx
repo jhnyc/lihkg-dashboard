@@ -7,14 +7,13 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { BsThreeDots } from "react-icons/bs";
-import "./ProfanityMetric.css";
+import "./Profanities.css";
 
 function ProfanityMetrics() {
   const [locked, setLocked] = React.useState(true);
   const [displayUncensored, setDisplayUncensored] = React.useState(false);
   const [guessMode, setGuessMode] = React.useState(true);
-  
+
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -22,9 +21,7 @@ function ProfanityMetrics() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/profanity_statistics`
-        );
+        const response = await fetch(`/profanity_statistics`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -43,10 +40,9 @@ function ProfanityMetrics() {
     getData();
   }, []);
 
-
-  const profanityRate = loading ? "" : Math.round(
-    (data.post_with_profanity * 100) / data.total_post
-  );
+  const profanityRate = loading
+    ? ""
+    : Math.round((data.post_with_profanity * 100) / data.total_post);
 
   function calculateFontSize(value) {
     if (value < 10000) {
@@ -75,9 +71,10 @@ function ProfanityMetrics() {
     setGuessMode(false);
   };
 
-  return (
-    loading ? "Loading..." : 
-    (<div className="post__activity card">
+  return loading ? (
+    "Loading..."
+  ) : (
+    <div className="post__activity card">
       <div className="post__activity__info">
         <div>
           <h3>Profanities</h3>
@@ -130,7 +127,7 @@ function ProfanityMetrics() {
           ))}
         </div>
       </div>
-    </div>)
+    </div>
   );
 }
 

@@ -10,9 +10,7 @@ function GenderDistributionByChannel() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/by_channel_sex_distribution`
-        );
+        const response = await fetch(`/by_channel_sex_distribution`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -43,8 +41,11 @@ function GenderDistributionByChannel() {
       {loading ? (
         "Loading..."
       ) : (
-        <ResponsiveContainer width="100%" height="80%">
-          <BarChart data={data.slice(0, BARTOSHOW)}>
+        <ResponsiveContainer width="100%" height="85%">
+          <BarChart
+            data={data.slice(0, BARTOSHOW)}
+            margin={{ top: 15, bottom: -10 }}
+          >
             <XAxis
               dataKey={"channel"}
               axisLine={false}

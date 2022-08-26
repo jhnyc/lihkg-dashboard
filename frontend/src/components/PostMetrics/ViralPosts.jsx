@@ -1,4 +1,5 @@
 import React from "react";
+import "./ViralPosts.css";
 
 function TopPosts() {
   const [displayByLike, setDisplayByLike] = React.useState(true);
@@ -30,11 +31,11 @@ function TopPosts() {
   }, []);
 
   const toggleHandler = () => {
-    setDisplayByLike(false);
+    setDisplayByLike(!displayByLike);
   };
 
   const generateData = () => {
-    return data.by_like.map((item, index) => (
+    return data[displayByLike ? "by_like" : "by_dislike"].map((item, index) => (
       <div className="trend">
         <div className="trend__info">
           <div>
@@ -56,8 +57,8 @@ function TopPosts() {
   };
 
   return (
-    <div className="trending__tracks card">
-      <div className="trending__info">
+    <div className="top_posts card">
+      <div className="info">
         <div>
           <h3>Viral Posts</h3>
           <span>What are the most liked & disliked posts?</span>

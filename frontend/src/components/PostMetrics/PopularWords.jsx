@@ -8,8 +8,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import topWordsRelatedPosts from ".././data/top_words_related_posts.json";
-
+import "./PopularWords.css";
 function Keywords() {
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(true);

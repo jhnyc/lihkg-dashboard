@@ -10,9 +10,7 @@ function PeriodMetric() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/number_of_new_members`
-        );
+        const response = await fetch(`/number_of_posts`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -32,24 +30,27 @@ function PeriodMetric() {
   }, []);
 
   const handleClick = (e) => {
-    if (e.target.id == "setDaily") {
+    if (e.target.id === "setDaily") {
       setDisplayMode("daily");
-    } else if (e.target.id == "setWeekly") {
+    } else if (e.target.id === "setWeekly") {
       setDisplayMode("weekly");
-    } else if (e.target.id == "setMonthly") {
+    } else if (e.target.id === "setMonthly") {
       setDisplayMode("monthly");
     }
   };
 
-  return (
+  return loading ? (
+    "Loading..."
+  ) : (
     <div className="top__card card">
-      <h3> Member Acquisition </h3> <span> 1 Jan - 31 Dec 2021 </span>
+      <h3>Period Statistics</h3>
+      <span>1 Jan - 31 Dec 2021</span>
       <div className="top__card__controls">
         <button
           id="setDaily"
           onClick={handleClick}
           style={{
-            border: `${displayMode == "daily" ? "2px solid white" : "0px"}`,
+            border: `${displayMode === "daily" ? "2px solid white" : "0px"}`,
           }}
         >
           D
@@ -58,7 +59,7 @@ function PeriodMetric() {
           id="setWeekly"
           onClick={handleClick}
           style={{
-            border: `${displayMode == "weekly" ? "2px solid white" : "0px"}`,
+            border: `${displayMode === "weekly" ? "2px solid white" : "0px"}`,
           }}
         >
           W
@@ -67,40 +68,40 @@ function PeriodMetric() {
           id="setMonthly"
           onClick={handleClick}
           style={{
-            border: `${displayMode == "monthly" ? "2px solid white" : "0px"}`,
+            border: `${displayMode === "monthly" ? "2px solid white" : "0px"}`,
           }}
         >
           M
         </button>
       </div>
-      {loading ? (
-        "Loading..."
-      ) : (
-        <ResponsiveContainer width="100%" height="75%">
-          <AreaChart data={data[displayMode]}>
-            <defs>
-              <linearGradient id="colorview" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="30%" stopColor="#1cc97b" stopOpacity={0.4} />
-                <stop offset="95%" stopColor="#252931" stopOpacity={0.2} />
-              </linearGradient>
-            </defs>
-            <Tooltip
-              contentStyle={{ backgroundColor: "#2d333c", opacity: "0.8" }}
-              labelFormatter={(index) => {
-                return `${data[displayMode][index]["date"]}`;
-              }}
-            />
-            <Area
-              type="monotone"
-              dataKey="users"
-              stroke="#1eeb8e"
-              strokeWidth={2}
-              fillOpacity={1}
-              fill="url(#colorview)"
-            />
-          </AreaChart>
-        </ResponsiveContainer>
-      )}
+      <ResponsiveContainer width="100%" height="75%">
+        <AreaChart data={data[displayMode]}>
+          <defs>
+            <linearGradient id="colorview" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="30%" stopColor="#323fff" stopOpacity={0.4} />
+              <stop offset="95%" stopColor="#181818" stopOpacity={0.2} />
+            </linearGradient>
+          </defs>
+          <Tooltip
+            contentStyle={{ backgroundColor: "#2d333c", opacity: "0.8" }}
+            labelFormatter={(index) => {
+              return `${
+                data[displayMode][index] === undefined
+                  ? "loading ..."
+                  : data[displayMode][index].date
+              }`;
+            }}
+          />
+          <Area
+            type="monotone"
+            dataKey="posts"
+            stroke="#323fff"
+            strokeWidth={2}
+            fillOpacity={1}
+            fill="url(#colorview)"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
   );
 }

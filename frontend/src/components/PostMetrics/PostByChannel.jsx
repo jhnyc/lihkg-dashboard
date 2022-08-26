@@ -8,7 +8,6 @@ import {
   Tooltip,
   Label,
 } from "recharts";
-import byChannelData from ".././data/by_channel_distribution.json";
 
 function ChannelDistribution() {
   const [displayData, setDisplayData] = React.useState("");
@@ -39,27 +38,23 @@ function ChannelDistribution() {
   }, []);
 
   const COLORS = [
-    "#323fff",
-    "#53ebe4",
-    "#0f9595",
-    "#084f64",
-    "#03274c",
-    "#08173d",
-    "#0b001b",
-    "#4d004f",
-    "#c1115a",
-    "#e46a87",
-    "#8089a6",
-    "#636a80",
+    "#b12a5a",
+    "#a62b67",
+    "#9c2d74",
+    "#922f80",
+    "#87318d",
+    "#7d329a",
+    "#7334a7",
+    "#6936b4",
+    "#5e37c1",
+    "#5439ce",
+    "#4a3bda",
+    "#3f3de7",
   ];
 
   const totalPostCount = loading
     ? 1
     : data.reduce((totalSum, item) => totalSum + item.post_count, 0);
-
-  function calculatePercentage(value) {
-    return Math.round(value / totalPostCount);
-  }
 
   return loading ? (
     "Loading..."
@@ -67,18 +62,18 @@ function ChannelDistribution() {
     <div className="channel card">
       <div className="channel__info">
         <div>
-          <h3>Post Distribution by Channel</h3>
-          <span>Stop saying HK people have low social consciousness</span>
+          <h3>Posts by Channel</h3>
+          <span>A great chunk of posts are about social affairs.</span>
         </div>
       </div>
-      <ResponsiveContainer width="100%" height={200}>
+      <ResponsiveContainer width="100%" height="90%">
         <PieChart>
           <Pie
             data={data}
             cx={"50%"}
             cy={"50%"}
-            innerRadius={60}
-            outerRadius={80}
+            innerRadius={90}
+            outerRadius={130}
             fill="#8884d8"
             paddingAngle={3}
             dataKey="post_count"

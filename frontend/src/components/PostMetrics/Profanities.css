@@ -1,10 +1,9 @@
-
-#unlock_container{
+#unlock_container {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 2vh;
 }
-
 
 #unlock_button {
     width: 11em;
@@ -14,7 +13,6 @@
     font-size: 0.8em;
     color: #fafafa;
     border: 0px;
-    padding: 0.5em;
     margin: 1em;
     cursor: pointer;
 }
@@ -28,11 +26,13 @@
     justify-content: center;
     font-weight: 500;
     font-size: 1em;
+    margin-top: 1vh;
 }
 
 #profanity_info {
     width: 100%;
     height: 70%;
+    margin-top: 2vh;
     display: flex;
 }
 
@@ -47,17 +47,21 @@
     cursor: pointer;
 }
 
-
 #top_profanity_word_0_active {
     background: -webkit-linear-gradient(300deg, #323fff, #c1115a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-top: -1vh;
 }
 
-#top_profanity_word_1_active, #top_profanity_word_2_active, #top_profanity_word_3_active, #top_profanity_word_4_active {
+#top_profanity_word_1_active,
+#top_profanity_word_2_active,
+#top_profanity_word_3_active,
+#top_profanity_word_4_active {
     background: -webkit-linear-gradient(45deg, #b5bafbde, #cd96adde);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-top: -1vh;
 }
 
 #word_blob span {
@@ -65,11 +69,11 @@
     font-weight: 100;
 }
 
-
 [id^="top_profanity_word_"]:hover {
-    transform: scale(1.1,1.1);
+    transform: scale(1.1, 1.1);
     transition: ease-in-out 0.3s;
 }
+
 [id^="top_profanity_word_"]:not(:hover) {
     transition: ease-in-out 0.3s;
 }

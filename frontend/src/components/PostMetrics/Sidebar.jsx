@@ -1,5 +1,4 @@
 import React from "react";
-import { IoStatsChartSharp } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import { IoChatbubbleEllipsesSharp } from "react-icons/io5";
 import { RiFolderDownloadFill } from "react-icons/ri";
@@ -24,7 +23,7 @@ function Sidebar(props) {
       <div
         id="toggle"
         onClick={toggleOpenOrClose}
-        style={{ width: isOpen ? "15%" : "auto" }}
+        style={{ left: isOpen ? "40%" : "auto" }}
       >
         <AiOutlineMenu />
       </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import { AreaChart, Area, Tooltip, ResponsiveContainer } from "recharts";
 
-
 function PeriodMetric() {
   const [displayMode, setDisplayMode] = React.useState("daily");
   const [data, setData] = React.useState(null);
@@ -11,9 +10,7 @@ function PeriodMetric() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/number_of_posts`
-        );
+        const response = await fetch(`/number_of_new_members`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -32,7 +29,6 @@ function PeriodMetric() {
     getData();
   }, []);
 
-
   const handleClick = (e) => {
     if (e.target.id == "setDaily") {
       setDisplayMode("daily");
@@ -43,11 +39,9 @@ function PeriodMetric() {
     }
   };
 
-
-  return (loading ? "Loading..." :
-    (<div className="top__card card">
-      <h3>Period Statistics</h3>
-      <span>1 Jan - 31 Dec 2021</span>
+  return (
+    <div className="top__card card">
+      <h3> Member Acquisition </h3> <span> 1 Jan - 31 Dec 2021 </span>
       <div className="top__card__controls">
         <button
           id="setDaily"
@@ -77,31 +71,39 @@ function PeriodMetric() {
           M
         </button>
       </div>
-      <ResponsiveContainer width="100%" height="75%">
-        <AreaChart data={data[displayMode]}>
-          <defs>
-            <linearGradient id="colorview" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="30%" stopColor="#323fff" stopOpacity={0.4} />
-              <stop offset="95%" stopColor="#181818" stopOpacity={0.2} />
-            </linearGradient>
-          </defs>
-          <Tooltip
-            contentStyle={{ backgroundColor: "#2d333c", opacity: "0.8" }}
-            labelFormatter={(index) => {
-              return `${data[displayMode][index]["date"]}`;
-            }}
-          />
-          <Area
-            type="monotone"
-            dataKey="posts"
-            stroke="#323fff"
-            strokeWidth={2}
-            fillOpacity={1}
-            fill="url(#colorview)"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>)
+      {loading ? (
+        "Loading..."
+      ) : (
+        <ResponsiveContainer width="100%" height="75%">
+          <AreaChart data={data[displayMode]}>
+            <defs>
+              <linearGradient id="colorview" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="30%" stopColor="#1cc97b" stopOpacity={0.4} />
+                <stop offset="95%" stopColor="#252931" stopOpacity={0.2} />
+              </linearGradient>
+            </defs>
+            <Tooltip
+              contentStyle={{ backgroundColor: "#2d333c", opacity: "0.8" }}
+              labelFormatter={(index) => {
+                return `${
+                  data[displayMode][index] === undefined
+                    ? "loading ..."
+                    : data[displayMode][index].date
+                }`;
+              }}
+            />
+            <Area
+              type="monotone"
+              dataKey="users"
+              stroke="#1eeb8e"
+              strokeWidth={2}
+              fillOpacity={1}
+              fill="url(#colorview)"
+            />
+          </AreaChart>
+        </ResponsiveContainer>
+      )}
+    </div>
   );
 }
 

@@ -1,0 +1,65 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    width: 80vw;
+    height: 7vh;
+    background-color: black;
+    z-index: 300;
+    right: 0px;
+}
+
+.navbar .info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar .info .inquiry {
+    width: 4ex;
+    height: 4ex;
+    border-radius: 50%;
+    text-align: center;
+    background: rgb(193, 17, 90);
+    background: linear-gradient(140deg, rgba(193, 17, 90, 1) 0%, rgba(50, 63, 255, 1) 100%);
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 3.5ex;
+    color: white;
+    margin-right: 4rem;
+    cursor: pointer;
+}
+
+.modalBackdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.modal-container {
+    position: fixed;
+    background: rgb(193, 17, 90);
+    background: linear-gradient(140deg, rgba(193, 17, 90, 1) 0%, rgba(50, 63, 255, 1) 100%);
+    padding: 0.3em;
+    border-radius: 1em;
+    margin-left: 40vw;
+    top: 30%;
+    /* height: 25vh;
+    width: 25vw; */
+    max-width: 25vw;
+}
+
+.modal-content {
+    padding: 2rem;
+    z-index: 200;
+    height: 100%;
+    border-radius: 15px;
+    background-color: #181818;
+    text-align: justify;
+}

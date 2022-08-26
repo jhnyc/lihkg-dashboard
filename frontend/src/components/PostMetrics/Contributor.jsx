@@ -1,6 +1,12 @@
 import React from "react";
-import userAgeData from ".././data/post_count_by_user_age.json";
-import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  Tooltip,
+  ResponsiveContainer,
+  Label,
+} from "recharts";
 
 function TrendingUsers() {
   const [data, setData] = React.useState(null);
@@ -10,9 +16,7 @@ function TrendingUsers() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/post_count_by_user_age`
-        );
+        const response = await fetch(`/post_count_by_user_age`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -32,8 +36,8 @@ function TrendingUsers() {
   }, []);
 
   return (
-    <div className="trending__users card">
-      <div className="trending__info">
+    <div className="contributor card">
+      <div className="info">
         <div>
           <h3>Major Contributors</h3>
           <span>New members barely post anything.</span>
@@ -42,14 +46,26 @@ function TrendingUsers() {
       {loading ? (
         <div>Loading...</div>
       ) : (
-        <ResponsiveContainer width="100%" height="80%">
-          <BarChart data={data}>
+        <ResponsiveContainer width="100%" height="90%">
+          <BarChart data={data} margin={{ top: 30, bottom: 30 }}>
             <XAxis
               dataKey={"age"}
               axisLine={false}
               tickLine={false}
               type={"category"}
-            />
+              dy={1}
+              
+            >
+              <Label
+                style={{
+                  fontSize: "85%",
+                  fill: "#cccccc",
+                }}
+                offset={10}
+                position="bottom"
+                value={"Years since Sign-up"}
+              />
+            </XAxis>
             <Tooltip
               contentStyle={{ backgroundColor: "#2d333c", opacity: "0.9" }}
               cursor={{ fill: "none" }}

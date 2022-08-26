@@ -1,5 +1,4 @@
 import React from "react";
-import annualUserCount from "../data/annual_user_count.json";
 
 function TotalUsers() {
   const [data, setData] = React.useState(null);

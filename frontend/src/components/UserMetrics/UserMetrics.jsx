@@ -1,10 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar";
-import PeriodMetric from "./PeriodMetric";
+import NewMemberPeriodMetric from "./NewMemberPeriodMetric";
 import TopFemaleMaleChannel from "./TopFemaleMaleChannel";
 import TotalUsers from "./TotalUsers";
-import TotalNewUsers from "./TotalNewUsers";
-import SexRatio from "./SexRatio";
+import TotalNewSignups from "./TotalNewSignups";
+import GenderRatio from "./GenderRatio";
 import GenderDistributionByChannel from "./GenderDistributionByChannel";
 import MemberScatterPlot from "./MemberScatterPlot";
 import AnnualUserGrowth from "./AnnualUserGrowth";
@@ -12,14 +11,13 @@ import AnnualUserGrowth from "./AnnualUserGrowth";
 function UserMetrics() {
   return (
     <div className="metrics">
-      <Navbar />
       <div className="grid-zero-user">
         <TotalUsers />
-        <TotalNewUsers />
-        <SexRatio />
+        <TotalNewSignups />
+        <GenderRatio />
       </div>
       <div className="grid-one-user">
-        <PeriodMetric />
+        <NewMemberPeriodMetric />
         <GenderDistributionByChannel />
       </div>
       <div className="grid-two-user">

@@ -26,9 +26,7 @@ function MemberScatterPlot() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/user_scatter_plot_data`
-        );
+        const response = await fetch(`/user_scatter_plot_data`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -49,7 +47,6 @@ function MemberScatterPlot() {
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
-      console.log(payload);
       return (
         <div className="recharts-default-tooltip">
           <p className="recharts-tooltip-label">{payload[0].payload.name}</p>
@@ -80,7 +77,7 @@ function MemberScatterPlot() {
         "Loading..."
       ) : (
         <ResponsiveContainer width="100%" height="90%">
-          <ScatterChart margin={{ top: 40, right: 20, bottom: 10, left: 0 }}>
+          <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 0 }}>
             {/* <CartesianGrid strokeDasharray="3 3" /> */}
             <XAxis
               dataKey="like_dislike_ratio"
@@ -88,14 +85,15 @@ function MemberScatterPlot() {
               type="number"
               tick={true}
               tickSize={0}
+              dy={5}
             >
               <Label
                 style={{
-                  fontSize: "100%",
-                  fill: "white",
+                  fontSize: "85%",
+                  fill: "#cccccc",
                 }}
                 position="bottom"
-                angle={0}
+                offset={3}
                 value={"Like/Dislike Ratio"}
               />
             </XAxis>
@@ -103,11 +101,12 @@ function MemberScatterPlot() {
               <Label
                 style={{
                   textAnchor: "middle",
-                  fontSize: "100%",
-                  fill: "white",
+                  fontSize: "85%",
+                  fill: "#cccccc",
                 }}
                 angle={270}
-                position="insideleft"
+                offset={-20}
+                position="left"
                 value={"Response"}
               />
             </YAxis>

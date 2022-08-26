@@ -1,5 +1,4 @@
 import React from "react";
-import postStatistics from ".././data/post_statistics.json";
 
 function TotalPosts() {
   const [data, setData] = React.useState(null);
