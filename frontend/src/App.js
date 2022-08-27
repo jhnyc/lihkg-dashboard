@@ -6,8 +6,6 @@ import Download from "./components/Download/DownloadPage";
 import { Routes, Route, Link } from "react-router-dom";
 import React from "react";
 
-import "./scss/Styles.scss";
-
 function App() {
   const [sidebarOpen, setSidebarOpen] = React.useState(true);
   console.log("parent" + sidebarOpen);

@@ -8,7 +8,6 @@ import {
   Label,
   ResponsiveContainer,
 } from "recharts";
-import GenderCount from '../data/gender_count.json'
 
 function SexRatio() {
   // const data = [GenderCount];
@@ -20,9 +19,7 @@ function SexRatio() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/gender_count`
-        );
+        const response = await fetch(`/gender_count`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -30,7 +27,7 @@ function SexRatio() {
         }
         let actualData = await response.json();
         setData(actualData);
-        setMaleFemaleRatio(Math.round((actualData.M * 10) / actualData.F) / 10)
+        setMaleFemaleRatio(Math.round((actualData.M * 10) / actualData.F) / 10);
         setError(null);
       } catch (err) {
         setError(err.message);
@@ -42,9 +39,7 @@ function SexRatio() {
     getData();
   }, []);
 
-
   return (
-    
     <div className="summary_statistics card">
       {/* // <div className="summary_statistics__info"> */}
       <div className="ratio">
