@@ -16,7 +16,7 @@ function TrendingUsers() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/post_count_by_user_age`);
+        const response = await fetch(`/api/post_count_by_user_age`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

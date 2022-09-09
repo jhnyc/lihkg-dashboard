@@ -10,7 +10,7 @@ function GenderDistributionByChannel() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/by_channel_sex_distribution`);
+        const response = await fetch(`/api//by_channel_sex_distribution`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

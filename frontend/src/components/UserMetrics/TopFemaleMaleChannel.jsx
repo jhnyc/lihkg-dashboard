@@ -9,9 +9,7 @@ function TopFemaleMaleChannel() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/gender_balance`
-        );
+        const response = await fetch(`/api//gender_balance`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

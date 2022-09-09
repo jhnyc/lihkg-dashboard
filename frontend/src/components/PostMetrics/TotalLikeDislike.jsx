@@ -8,7 +8,7 @@ function TotalLikeDislike() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/post_statistics`);
+        const response = await fetch(`/api/post_statistics`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

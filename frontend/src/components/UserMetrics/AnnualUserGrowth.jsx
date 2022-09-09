@@ -11,9 +11,7 @@ function AnnualUserGrowth() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(
-          `/annual_user_count`
-        );
+        const response = await fetch(`/api//annual_user_count`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

@@ -19,7 +19,7 @@ function SexRatio() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/gender_count`);
+        const response = await fetch(`/api//gender_count`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

@@ -21,7 +21,7 @@ function ProfanityMetrics() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/profanity_statistics`);
+        const response = await fetch(`/api/profanity_statistics`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

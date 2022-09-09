@@ -26,7 +26,7 @@ function MemberScatterPlot() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/user_scatter_plot_data`);
+        const response = await fetch(`/api//user_scatter_plot_data`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

@@ -10,7 +10,7 @@ function PeriodMetric() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/number_of_posts`);
+        const response = await fetch(`/api/number_of_posts`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`

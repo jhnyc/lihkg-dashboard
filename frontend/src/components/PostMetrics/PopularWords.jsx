@@ -19,7 +19,7 @@ function Keywords() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/top_words_related_posts`);
+        const response = await fetch(`/api/top_words_related_posts`);
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
