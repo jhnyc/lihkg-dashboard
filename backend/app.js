@@ -49,7 +49,7 @@ app.get("/favicon.ico", (req, res) => {
 //         else res.send(JSON.parse(data.Body.toString("utf-8"))); // successful response
 //     });
 // });
-app.get("/:id", (req, res) => {
+app.get("/api/:id", (req, res) => {
     var file = require(`./asset/${req.params.id}.json`);
     res.send(file);
 });
