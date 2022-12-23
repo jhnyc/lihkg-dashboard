@@ -14,9 +14,10 @@
     color: #a2a2a2;
 }
 
-[class^="grid-zero"] {
+
+/* [class^="grid-zero"] {
     margin-top: 7vh;
-}
+} */
 
 .metrics .grid-zero {
     display: grid;

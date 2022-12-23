@@ -1,28 +1,8 @@
 import React from "react";
-import { OverlayTrigger, Popover } from "react-bootstrap";
 
 function Navbar() {
   const [modalState, setModalState] = React.useState("none");
-
-  const inquiryPopover = () => {
-    return (
-      <OverlayTrigger
-        trigger="click"
-        key="bottom"
-        placement="bottom"
-        overlay={
-          <Popover id={`popover-positioned-bottom`}>
-            <Popover.Header as="h3">{`Popover bottom`}</Popover.Header>
-            <Popover.Body>
-              <strong>Holy guacamole!</strong> Check this info.
-            </Popover.Body>
-          </Popover>
-        }
-      >
-        <button className="inquiry">?</button>
-      </OverlayTrigger>
-    );
-  };
+  const [selectedYear, setSelectedYear] = React.useState(2021);
 
   const inquiryOnClick = () => {
     setModalState(modalState == "none" ? "block" : "none");
@@ -30,7 +10,21 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <h1>LIHKG in 2021</h1>
+      {/* <h1>LIHKG in 2021</h1> */}
+      <div className="year">
+        <button
+          id={selectedYear == 2021 ? "selected_year" : ""}
+          onClick={() => setSelectedYear(2021)}
+        >
+          2021
+        </button>
+        <button
+          id={selectedYear == 2022 ? "selected_year" : ""}
+          onClick={() => setSelectedYear(2022)}
+        >
+          2022
+        </button>
+      </div>
       <div className="info">
         {/* <div className="inquiry">?</div> */}
         <button className="inquiry" onClick={inquiryOnClick}>
