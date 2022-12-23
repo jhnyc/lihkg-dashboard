@@ -21,32 +21,37 @@ function Sidebar(props) {
   return (
     <div className="sidebar">
       <div
-        id="toggle"
-        onClick={toggleOpenOrClose}
-        style={{ left: isOpen ? "40%" : "auto" }}
+        className="sidebar-toggle-container"
+        style={{ justifyContent: isOpen ? "flex-end" : "center" }}
       >
-        <AiOutlineMenu />
+        <button
+          id="toggle"
+          onClick={toggleOpenOrClose}
+          // style={{ left: isOpen ? "80%" : "30%" }}
+        >
+          <AiOutlineMenu />
+        </button>{" "}
       </div>
       <div className="upper__container">
         <div className="brand">
           <a href="http://lihkg.com" target="_blank">
             <img src={Logo} alt="" />
-          </a>
-        </div>
+          </a>{" "}
+        </div>{" "}
         <div className="links">
           <ul>
             <li
               id={location.pathname == "/" ? "active" : ""}
               style={{ justifyContent: isOpen ? "" : "center" }}
             >
-              {/* <IoChatbubbleEllipsesSharp /> */}
+              {/* <IoChatbubbleEllipsesSharp /> */}{" "}
               <Link to="/">
                 <IoChatbubbleEllipsesSharp />
                 <span style={{ display: isOpen ? "" : "none" }}>
-                  Post Insights
-                </span>
-              </Link>
-            </li>
+                  Post Insights{" "}
+                </span>{" "}
+              </Link>{" "}
+            </li>{" "}
             <li
               id={location.pathname == "/usermetrics" ? "active" : ""}
               style={{ justifyContent: isOpen ? "" : "center" }}
@@ -54,22 +59,25 @@ function Sidebar(props) {
               <Link to="/usermetrics">
                 <FaUsers />
                 <span style={{ display: isOpen ? "" : "none" }}>
-                  User Insights
-                </span>
-              </Link>
-            </li>
+                  User Insights{" "}
+                </span>{" "}
+              </Link>{" "}
+            </li>{" "}
             <li
               id={location.pathname == "/download" ? "active" : ""}
               style={{ justifyContent: isOpen ? "" : "center" }}
             >
               <Link to="/download">
                 <RiFolderDownloadFill />
-                <span style={{ display: isOpen ? "" : "none" }}>Download</span>
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+                <span style={{ display: isOpen ? "" : "none" }}>
+                  {" "}
+                  Download{" "}
+                </span>{" "}
+              </Link>{" "}
+            </li>{" "}
+          </ul>{" "}
+        </div>{" "}
+      </div>{" "}
     </div>
   );
 }
