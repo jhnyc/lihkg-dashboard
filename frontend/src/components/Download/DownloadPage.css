@@ -5,14 +5,15 @@
     /* background: rgb(37, 41, 49);
     background: linear-gradient(323deg, rgba(37, 41, 49, 1) 0%, rgba(45, 51, 60, 1) 20%, rgba(77, 86, 98, 1) 100%); */
     background-color: black;
+    padding-top: 3rem;
 }
 
 .download_page .container {
     background: rgb(193, 17, 90);
     background: linear-gradient(140deg, rgba(193, 17, 90, 1) 0%, rgba(50, 63, 255, 1) 100%);
     padding: 0.3em;
-    border-radius: 0.4em;
-    margin-bottom: 20%;
+    border-radius: 1em;
+    margin-bottom: 10%;
 }
 
 .narative {
@@ -20,7 +21,7 @@
     align-items: center;
     justify-content: center;
     width: 25vw;
-    border-radius: 0.4rem;
+    border-radius: 15px;
     /* background-color: #252931; */
     background-color: #181818;
     padding: 2rem;
@@ -61,9 +62,9 @@
     transition: ease 0.3s;
 }
 
-.download_button a{
-        text-decoration: none;
-        color: #fafafa;
+.download_button a {
+    text-decoration: none;
+    color: #fafafa;
 }
 
 @keyframes animate-gradient {
