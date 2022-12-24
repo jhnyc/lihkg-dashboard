@@ -1,15 +1,25 @@
 .sidebar {
     background-color: #181818;
+    border-right: 1px solid #3f3f3f;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.sidebar_container {
+    position: fixed;
+    width: 15%;
+    height: 95vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    border-right: 1px solid #3f3f3f;
+    justify-content: space-between;
 }
 
 .sidebar-toggle-container {
     display: flex;
     justify-content: flex-end;
-    padding: 1.4rem 1rem;
+    padding: 1.4rem 0rem;
 }
 
 .sidebar #toggle {
@@ -69,4 +79,16 @@
 .sidebar #active a,
 .sidebar #active svg {
     color: white;
+}
+
+.sidebar .bottom__container {
+    bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.sidebar .bottom__container a {
+    color: #afafaf;
+    cursor: pointer;
 }
