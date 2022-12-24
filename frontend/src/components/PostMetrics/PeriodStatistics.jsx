@@ -46,7 +46,7 @@ function PeriodMetric(props) {
   ) : (
     <div className="top__card card">
       <h3>Period Statistics</h3>
-      <span>1 Jan - 31 Dec 2021</span>
+      <span>1 Jan - 31 Dec {props.selectedYear}</span>
       <div className="top__card__controls">
         <button
           id="setDaily"
