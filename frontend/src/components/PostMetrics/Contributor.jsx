@@ -8,7 +8,7 @@ import {
   Label,
 } from "recharts";
 
-function TrendingUsers() {
+function TrendingUsers(props) {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -16,7 +16,9 @@ function TrendingUsers() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/post_count_by_user_age`);
+        const response = await fetch(
+          `http://localhost:3100/post_count_by_user_age?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -33,7 +35,7 @@ function TrendingUsers() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   return (
     <div className="contributor card">
@@ -54,7 +56,6 @@ function TrendingUsers() {
               tickLine={false}
               type={"category"}
               dy={1}
-              
             >
               <Label
                 style={{

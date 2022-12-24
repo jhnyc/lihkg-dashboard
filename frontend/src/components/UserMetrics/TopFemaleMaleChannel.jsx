@@ -1,7 +1,7 @@
 import React from "react";
 import "./TopFemaleMaleChannel.css";
 
-function TopFemaleMaleChannel() {
+function TopFemaleMaleChannel(props) {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -9,7 +9,9 @@ function TopFemaleMaleChannel() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api//gender_balance`);
+        const response = await fetch(
+          `http://localhost:3100/gender_balance?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -26,7 +28,7 @@ function TopFemaleMaleChannel() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   return (
     <div className="top_female_male card">
@@ -37,14 +39,18 @@ function TopFemaleMaleChannel() {
         </div>
         <div className="top_female_male_container">
           <div className="feminine">
-            <h1>{loading ? "Loading..." : data['most feminine'].ratio}</h1>
+            <h1>{loading ? "Loading..." : data["most feminine"].ratio}</h1>
             <span>female publishers per 100 posts</span>
-            <div id="channel">{loading ? "Loading..." : data['most feminine'].channel}</div>
+            <div id="channel">
+              {loading ? "Loading..." : data["most feminine"].channel}
+            </div>
           </div>
           <div className="masculine">
-            <h1>{loading ? "Loading..." : data['most masculine'].ratio}</h1>
+            <h1>{loading ? "Loading..." : data["most masculine"].ratio}</h1>
             <span>male publishers per 100 posts</span>
-            <div id="channel">{loading ? "Loading..." : data['most masculine'].channel}</div>
+            <div id="channel">
+              {loading ? "Loading..." : data["most masculine"].channel}
+            </div>
           </div>
         </div>
       </div>

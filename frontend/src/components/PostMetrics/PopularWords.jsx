@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import "./PopularWords.css";
-function Keywords() {
+function Keywords(props) {
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -19,7 +19,9 @@ function Keywords() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/top_words_related_posts`);
+        const response = await fetch(
+          `http://localhost:3100/top_words_related_posts?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -37,7 +39,7 @@ function Keywords() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const barChartOnClickSearchPost = (e) => {
     var phrase = e.Phrase.replace(" ", "");

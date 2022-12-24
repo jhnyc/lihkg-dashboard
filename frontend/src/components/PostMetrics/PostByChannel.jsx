@@ -9,7 +9,7 @@ import {
   Label,
 } from "recharts";
 
-function ChannelDistribution() {
+function ChannelDistribution(props) {
   const [displayData, setDisplayData] = React.useState("");
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -18,7 +18,9 @@ function ChannelDistribution() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/by_channel_distribution`);
+        const response = await fetch(
+          `http://localhost:3100/by_channel_distribution?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -35,7 +37,7 @@ function ChannelDistribution() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const COLORS = [
     "#b12a5a",

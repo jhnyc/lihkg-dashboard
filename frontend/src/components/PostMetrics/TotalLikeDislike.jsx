@@ -1,6 +1,6 @@
 import React from "react";
 
-function TotalLikeDislike() {
+function TotalLikeDislike(props) {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -8,7 +8,9 @@ function TotalLikeDislike() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/post_statistics`);
+        const response = await fetch(
+          `http://localhost:3100/post_statistics?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -25,7 +27,7 @@ function TotalLikeDislike() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const roundNumberMillion = (num) => {
     return Math.round((num * 10) / 1000000) / 10;

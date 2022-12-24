@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-function SexRatio() {
+function SexRatio(props) {
   // const data = [GenderCount];
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -19,7 +19,9 @@ function SexRatio() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api//gender_count`);
+        const response = await fetch(
+          `http://localhost:3100/gender_count?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -37,7 +39,7 @@ function SexRatio() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   return (
     <div className="summary_statistics card">

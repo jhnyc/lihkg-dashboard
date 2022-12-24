@@ -8,23 +8,23 @@ import GenderDistributionByChannel from "./GenderDistributionByChannel";
 import MemberScatterPlot from "./MemberScatterPlot";
 import AnnualUserGrowth from "./AnnualUserGrowth";
 
-function UserMetrics() {
+function UserMetrics(props) {
   return (
     <div className="metrics">
       <div className="grid-zero-user">
-        <TotalUsers />
-        <TotalNewSignups />
-        <GenderRatio />
-      </div>
+        <TotalUsers selectedYear={props.selectedYear} />{" "}
+        <TotalNewSignups selectedYear={props.selectedYear} />{" "}
+        <GenderRatio selectedYear={props.selectedYear} />{" "}
+      </div>{" "}
       <div className="grid-one-user">
-        <NewMemberPeriodMetric />
-        <GenderDistributionByChannel />
-      </div>
+        <NewMemberPeriodMetric selectedYear={props.selectedYear} />{" "}
+        <GenderDistributionByChannel selectedYear={props.selectedYear} />{" "}
+      </div>{" "}
       <div className="grid-two-user">
-        <AnnualUserGrowth />
-        <MemberScatterPlot />
-        <TopFemaleMaleChannel />
-      </div>
+        <AnnualUserGrowth selectedYear={props.selectedYear} />{" "}
+        <MemberScatterPlot selectedYear={props.selectedYear} />{" "}
+        <TopFemaleMaleChannel selectedYear={props.selectedYear} />{" "}
+      </div>{" "}
     </div>
   );
 }

@@ -14,7 +14,7 @@ import {
 } from "recharts";
 import "./MemberScatterPlot.css";
 
-function MemberScatterPlot() {
+function MemberScatterPlot(props) {
   const likeRatioThreshold = 90;
   const pagesThreshold = 30;
   const numUsers = 200;
@@ -26,7 +26,9 @@ function MemberScatterPlot() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api//user_scatter_plot_data`);
+        const response = await fetch(
+          `http://localhost:3100/user_scatter_plot_data?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -43,7 +45,7 @@ function MemberScatterPlot() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {

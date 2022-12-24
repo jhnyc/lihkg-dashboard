@@ -1,11 +1,16 @@
 import React from "react";
 
-function Navbar() {
+function Navbar(props) {
   const [modalState, setModalState] = React.useState("none");
   const [selectedYear, setSelectedYear] = React.useState(2021);
 
   const inquiryOnClick = () => {
     setModalState(modalState == "none" ? "block" : "none");
+  };
+
+  const changeYearHandler = (year) => {
+    setSelectedYear(year);
+    props.setGlobalSelectedYearState(year);
   };
 
   return (
@@ -14,13 +19,13 @@ function Navbar() {
       <div className="year">
         <button
           id={selectedYear == 2021 ? "selected_year" : ""}
-          onClick={() => setSelectedYear(2021)}
+          onClick={() => changeYearHandler(2021)}
         >
           2021
         </button>
         <button
           id={selectedYear == 2022 ? "selected_year" : ""}
-          onClick={() => setSelectedYear(2022)}
+          onClick={() => changeYearHandler(2022)}
         >
           2022
         </button>

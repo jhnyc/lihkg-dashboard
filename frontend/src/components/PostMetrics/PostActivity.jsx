@@ -1,7 +1,7 @@
 import React from "react";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-function PostActivity() {
+function PostActivity(props) {
   const [displayMode, setDisplayMode] = React.useState("by_weekday");
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -10,7 +10,9 @@ function PostActivity() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/posts_by_weekday_hour`);
+        const response = await fetch(
+          `http://localhost:3100/posts_by_weekday_hour?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -27,7 +29,7 @@ function PostActivity() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const handleClick = () => {
     if (displayMode == "by_weekday") {

@@ -1,6 +1,6 @@
 import React from "react";
 
-function TotalUsers() {
+function TotalUsers(props) {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -8,7 +8,9 @@ function TotalUsers() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api//annual_user_count`);
+        const response = await fetch(
+          `http://localhost:3100/annual_user_count?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -25,7 +27,7 @@ function TotalUsers() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const totalUsers = data?.reduce((total, item) => total + item.user_id, 0);
 

@@ -16,6 +16,17 @@ function Sidebar(props) {
     props.sidebarState(!isOpen);
   };
 
+  React.useEffect(() => {
+    function getWidth() {
+      console.log(window.innerWidth);
+      if (window.innerWidth < 1000) {
+        setIsOpen(false);
+        props.sidebarState(false);
+      }
+    }
+    window.addEventListener("resize", getWidth);
+  });
+
   const location = useLocation();
 
   return (
@@ -24,11 +35,7 @@ function Sidebar(props) {
         className="sidebar-toggle-container"
         style={{ justifyContent: isOpen ? "flex-end" : "center" }}
       >
-        <button
-          id="toggle"
-          onClick={toggleOpenOrClose}
-          // style={{ left: isOpen ? "80%" : "30%" }}
-        >
+        <button id="toggle" onClick={toggleOpenOrClose}>
           <AiOutlineMenu />
         </button>{" "}
       </div>

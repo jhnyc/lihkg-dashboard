@@ -1,6 +1,4 @@
 import React from "react";
-
-import Navbar from "./Navbar";
 import PeriodStatistics from "./PeriodStatistics";
 import Profanities from "./Profanities";
 import Contributor from "./Contributor";
@@ -13,28 +11,28 @@ import ViralPosts from "./ViralPosts";
 import PopularWords from "./PopularWords";
 import PostByChannel from "./PostByChannel";
 
-function Metrics() {
+function Metrics(props) {
   return (
     <div className="metrics">
       {/* <Navbar /> */}
       <div className="grid-zero">
-        <TotalPosts />
-        <TotalUniquePublishers />
-        <TotalPages />
-        <TotalLikeDislike />
+        <TotalPosts selectedYear={props.selectedYear} />
+        <TotalUniquePublishers selectedYear={props.selectedYear} />
+        <TotalPages selectedYear={props.selectedYear} />
+        <TotalLikeDislike selectedYear={props.selectedYear} />
       </div>
       <div className="grid-one">
-        <PeriodStatistics />
-        <PostActivity />
+        <PeriodStatistics selectedYear={props.selectedYear} />
+        <PostActivity selectedYear={props.selectedYear} />
       </div>
       <div className="grid-two">
-        <ViralPosts />
-        <Contributor />
-        <PostByChannel />
-        <PopularWords />
+        <ViralPosts selectedYear={props.selectedYear} />
+        <Contributor selectedYear={props.selectedYear} />
+        <PostByChannel selectedYear={props.selectedYear} />
+        <PopularWords selectedYear={props.selectedYear} />
       </div>
       <div className="grid-three">
-        <Profanities />
+        <Profanities selectedYear={props.selectedYear} />
       </div>
     </div>
   );

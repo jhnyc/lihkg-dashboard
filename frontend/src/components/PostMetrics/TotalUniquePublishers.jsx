@@ -1,6 +1,6 @@
 import React from "react";
 
-function TotalUniquePublishers() {
+function TotalUniquePublishers(props) {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -8,7 +8,9 @@ function TotalUniquePublishers() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/post_statistics`);
+        const response = await fetch(
+          `http://localhost:3100/post_statistics?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -25,7 +27,7 @@ function TotalUniquePublishers() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   return (
     <div className="summary_statistics card">

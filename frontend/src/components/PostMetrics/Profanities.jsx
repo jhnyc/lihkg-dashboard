@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import "./Profanities.css";
 
-function ProfanityMetrics() {
+function ProfanityMetrics(props) {
   const [locked, setLocked] = React.useState(true);
   const [displayUncensored, setDisplayUncensored] = React.useState(false);
   const [guessMode, setGuessMode] = React.useState(true);
@@ -21,7 +21,9 @@ function ProfanityMetrics() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/profanity_statistics`);
+        const response = await fetch(
+          `http://localhost:3100/profanity_statistics?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -38,7 +40,7 @@ function ProfanityMetrics() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const profanityRate = loading
     ? ""

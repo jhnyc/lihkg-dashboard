@@ -1,9 +1,7 @@
-
 import React from "react";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-
-function AnnualUserGrowth() {
+function AnnualUserGrowth(props) {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -11,7 +9,9 @@ function AnnualUserGrowth() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api//annual_user_count`);
+        const response = await fetch(
+          `http://localhost:3100/annual_user_count?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -28,10 +28,9 @@ function AnnualUserGrowth() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   return (
-    
     <div className="post__activity card">
       <div className="post__activity__info">
         <div>
@@ -39,30 +38,32 @@ function AnnualUserGrowth() {
           <span>2019 saw the biggest jump in users</span>
         </div>
       </div>
-      {loading ? "Loading..." :
-      (<ResponsiveContainer width="100%" height="90%">
-        <BarChart data={data} margin={{ top: 30, bottom: 20 }}>
-          <XAxis
-            dataKey={"create_time"}
-            axisLine={false}
-            tickLine={false}
-            type={"category"}
-          />
-          <Tooltip
-            contentStyle={{ backgroundColor: "#2d333c", opacity: "0.9" }}
-            cursor={{ fill: "none" }}
-          />
-          <Bar
-            radius={[20, 20, 20, 20]}
-            dataKey="user_id"
-            stackId="a"
-            fill={"#323fff"}
-            barSize={20}
-          />
-        </BarChart>
-      </ResponsiveContainer>)}
+      {loading ? (
+        "Loading..."
+      ) : (
+        <ResponsiveContainer width="100%" height="90%">
+          <BarChart data={data} margin={{ top: 30, bottom: 20 }}>
+            <XAxis
+              dataKey={"create_time"}
+              axisLine={false}
+              tickLine={false}
+              type={"category"}
+            />
+            <Tooltip
+              contentStyle={{ backgroundColor: "#2d333c", opacity: "0.9" }}
+              cursor={{ fill: "none" }}
+            />
+            <Bar
+              radius={[20, 20, 20, 20]}
+              dataKey="user_id"
+              stackId="a"
+              fill={"#323fff"}
+              barSize={20}
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      )}
     </div>
   );
 }
 export default AnnualUserGrowth;
-

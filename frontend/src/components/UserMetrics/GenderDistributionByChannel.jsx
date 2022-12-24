@@ -1,7 +1,7 @@
 import React from "react";
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 
-function GenderDistributionByChannel() {
+function GenderDistributionByChannel(props) {
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -10,7 +10,9 @@ function GenderDistributionByChannel() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api//by_channel_sex_distribution`);
+        const response = await fetch(
+          `http://localhost:3100/by_channel_sex_distribution?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -27,7 +29,7 @@ function GenderDistributionByChannel() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   return (
     <div className="post__activity card">

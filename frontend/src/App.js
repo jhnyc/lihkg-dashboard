@@ -8,19 +8,28 @@ import React from "react";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = React.useState(true);
-  console.log("parent" + sidebarOpen);
+  const [selectedYear, setSelectedYear] = React.useState(2021);
+
   return (
     <div
       className="dashboard"
       style={{ gridTemplateColumns: sidebarOpen ? "17% 83%" : "5% 95%" }}
     >
-      <Sidebar sidebarState={setSidebarOpen} />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<PostMetrics />} />
-        <Route path="/usermetrics" element={<UserMetrics />} />
-        <Route path="/download" element={<Download />} />
-      </Routes>
+      <Sidebar sidebarState={setSidebarOpen} />{" "}
+      <div>
+        <Navbar setGlobalSelectedYearState={setSelectedYear} />
+        <Routes>
+          <Route
+            path="/"
+            element={<PostMetrics selectedYear={selectedYear} />}
+          />{" "}
+          <Route
+            path="/usermetrics"
+            element={<UserMetrics selectedYear={selectedYear} />}
+          />{" "}
+          <Route path="/download" element={<Download />} />{" "}
+        </Routes>{" "}
+      </div>{" "}
     </div>
   );
 }

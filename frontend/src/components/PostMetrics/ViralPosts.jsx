@@ -1,7 +1,7 @@
 import React from "react";
 import "./ViralPosts.css";
 
-function TopPosts() {
+function TopPosts(props) {
   const [displayByLike, setDisplayByLike] = React.useState(true);
   // const data = displayByLike ? topPosts.by_like : topPosts.by_dislike
   const [data, setData] = React.useState(null);
@@ -11,7 +11,9 @@ function TopPosts() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/top_posts`);
+        const response = await fetch(
+          `http://localhost:3100/top_posts?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -28,7 +30,7 @@ function TopPosts() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const toggleHandler = () => {
     setDisplayByLike(!displayByLike);

@@ -1,7 +1,7 @@
 import React from "react";
 import { AreaChart, Area, Tooltip, ResponsiveContainer } from "recharts";
 
-function PeriodMetric() {
+function PeriodMetric(props) {
   const [displayMode, setDisplayMode] = React.useState("daily");
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
@@ -10,7 +10,9 @@ function PeriodMetric() {
   React.useEffect(() => {
     const getData = async () => {
       try {
-        const response = await fetch(`/api/number_of_posts`);
+        const response = await fetch(
+          `http://localhost:3100/number_of_posts?year=${props.selectedYear}`
+        );
         if (!response.ok) {
           throw new Error(
             `This is an HTTP error: The status is ${response.status}`
@@ -27,7 +29,7 @@ function PeriodMetric() {
       }
     };
     getData();
-  }, []);
+  }, [props.selectedYear]);
 
   const handleClick = (e) => {
     if (e.target.id === "setDaily") {
