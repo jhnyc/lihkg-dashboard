@@ -43,13 +43,20 @@ function Navbar(props) {
           <div class="modal-container">
             <div class="modal-content">
               <span>
-                Note that the data was collected in early-mid 2022 and therefore
-                the figures may not be up-to-date. For example, some users may
-                have deleted their profile after the data is collected. Also,
-                some data may be missing due to unexpected errors during data
-                collection. Therefore, please take this dashboard with a grain
-                of salt. Nonetheless, this should be enough to give us a good
-                idea about LIHKG in 2021.
+                Note that the data was collected in advance and therefore cannot
+                possibly reflect the actual up-to-date figures. For example,
+                some users may have deleted their profile after the data is
+                collected and some data may be missing (est. ~1%) due to
+                unexpected errors during data collection. Therefore, please take
+                this with a grain of salt. That being said, this should give us
+                a pretty good idea about LIHKG.
+              </span>
+              <br />
+              <br />
+              <span>
+                Also, just to make it clear that this website has no affiliation
+                whatsoever with LIHKG. It is nothing more than a for-fun side
+                project.
               </span>
             </div>
           </div>
