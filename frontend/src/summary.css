@@ -16,15 +16,17 @@
     background: -webkit-linear-gradient(45deg, #f5ece4, #fbcfe1, #d8bcfc, #b3dafc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    line-height: 300%;
 }
 
 .summary_statistics span {
     margin-left: 1rem;
     display: inline-flex;
     flex-direction: column;
-    flex-wrap: nowrap;
     align-content: center;
     justify-content: center;
+    overflow: hidden;
+    text-overflow: clip;
 }
 
 .summary_statistics .ratio {

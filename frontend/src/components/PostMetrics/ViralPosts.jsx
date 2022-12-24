@@ -38,8 +38,8 @@ function TopPosts(props) {
 
   const generateData = () => {
     return data[displayByLike ? "by_like" : "by_dislike"].map((item, index) => (
-      <div className="trend">
-        <div className="trend__info">
+      <div className="post_container">
+        <div className="post__info">
           <div>
             <a
               href={`https://lihkg.com/thread/${item.thread_id}/page/1`}
@@ -50,9 +50,13 @@ function TopPosts(props) {
             <span>{item.created_by_name}</span>
           </div>
         </div>
-        <div className="trend__meta">
+        <div className="post__like">
           <span id="channel_icon">{item.channel}</span>
-          <h5>{displayByLike ? item.like : item.dislike}</h5>
+          <text>
+            {displayByLike
+              ? `${Math.round(item.like / 1000)}k`
+              : `${Math.round(item.dislike / 1000)}k`}
+          </text>
         </div>
       </div>
     ));

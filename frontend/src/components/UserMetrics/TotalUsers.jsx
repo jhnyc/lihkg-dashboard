@@ -35,7 +35,7 @@ function TotalUsers(props) {
     <div className="summary_statistics card">
       <div className="summary_statistics__info">
         <h1>{loading ? "Loading..." : totalUsers} </h1>
-        <span>total members as of 31/12/2021</span>
+        <span>total members as of 31/12/{props.selectedYear}</span>
       </div>
     </div>
   );

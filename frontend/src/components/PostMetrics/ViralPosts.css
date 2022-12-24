@@ -20,7 +20,7 @@
     border: 0px;
 }
 
-.top_posts .trend {
+.top_posts .post_container {
     display: flex;
     margin-bottom: 1.2rem;
     gap: 1rem;
@@ -28,46 +28,53 @@
 }
 
 @media (max-width: 1080px) {
-    .top_posts .trend {
+    .top_posts .post_container {
         flex-direction: column;
     }
 }
 
-.top_posts .trend .trend__info {
+.top_posts .post_container .post__info {
     gap: 1rem;
     width: 65%;
     display: inline-block;
 }
 
-.top_posts .trend .trend__info img {
+.top_posts .post_container .post__info img {
     border-radius: 1rem;
     height: 3rem;
 }
 
-.top_posts .trend a,
-.top_posts .trend a:visited {
+.top_posts .post_container a,
+.top_posts .post_container a:visited {
     text-decoration: none;
     color: inherit;
 }
 
-.top_posts .trend h5 {
+.top_posts .post_container h5 {
+    width: 14vw;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 1rem;
-}
-
-.top_posts .trend span {
     font-size: 0.8rem;
 }
 
-.top_posts .trend .trend__meta {
+.top_posts .post_container span {
+    font-size: 0.8rem;
+}
+
+.top_posts .post_container text {
+    font-size: 0.8rem;
+    color: #fff;
+    line-height: 200%;
+}
+
+.top_posts .post_container .post__like {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
 
-.top_posts .trend #channel_icon {
+.top_posts .post_container #channel_icon {
     background-color: #2d3965;
     width: 55px;
     height: 25px;
@@ -78,11 +85,11 @@
     font-size: 0.7em;
 }
 
-.top_posts .trend:hover {
+.top_posts .post_container:hover {
     transform: translateX(10px);
     transition: ease 0.5s;
 }
 
-.top_posts .trend:not(:hover) {
+.top_posts .post_container:not(:hover) {
     transition: ease 0.5s;
 }

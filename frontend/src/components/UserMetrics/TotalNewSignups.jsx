@@ -36,10 +36,10 @@ function TotalNewUsers(props) {
           {loading
             ? "Loading..."
             : data.filter((year) => {
-                return year.create_time === 2021;
+                return year.create_time === props.selectedYear;
               })[0].user_id}{" "}
         </h1>
-        <span>new sign-ups in 2021</span>
+        <span>new sign-ups in {props.selectedYear}</span>
       </div>
     </div>
   );
