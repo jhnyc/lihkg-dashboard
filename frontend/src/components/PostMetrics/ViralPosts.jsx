@@ -3,7 +3,6 @@ import "./ViralPosts.css";
 
 function TopPosts(props) {
   const [displayByLike, setDisplayByLike] = React.useState(true);
-  // const data = displayByLike ? topPosts.by_like : topPosts.by_dislike
   const [data, setData] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
